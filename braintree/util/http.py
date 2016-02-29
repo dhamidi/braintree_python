@@ -59,7 +59,7 @@ class Http(object):
 
     def __http_do(self, http_verb, path, params=None):
         http_strategy = self.config.http_strategy()
-        request_body = XmlUtil.xml_from_dict(params) if params else ''
+        request_body = bytes(XmlUtil.xml_from_dict(params) if params else '')
 
         full_path = path if path.startswith(self.config.base_url()) else (self.config.base_url() + path)
 
